@@ -69,51 +69,59 @@
     }
 
     /* ===== HEADER / FUNDO TÍTULO ===== */
-    header.page-header {
-      position: relative;
-      background: #004d66;
-      color: white;
-      padding: 3rem 1rem 3rem 1rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 0 0 12px 12px;
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-    }
-    header.page-header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      position: relative;
-      z-index: 10;
-      font-weight: 700;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    /* Imagens de fundo com transparência */
-    header.page-header::before,
-    header.page-header::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 180px;
-      height: 180px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      opacity: 0.15;
-      transform: translateY(-50%);
-      z-index: 5;
-    }
-    header.page-header::before {
-      left: 15px;
-      background-image: url('images/fundo1.png');
-    }
-    header.page-header::after {
-      right: 15px;
-      background-image: url('images/fundo2.png');
-    }
+    /* ===== HEADER / CARROSSEL DE FUNDO ===== */
+header.page-header {
+  position: relative;
+  width: 100vw;
+  height: 280px;
+  background-color: #004d66; /* fallback */
+  overflow: hidden;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Container do carrossel */
+.header-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Imagens em fade */
+.header-carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Imagem visível */
+.header-carousel img.active {
+  opacity: 1;
+}
+
+/* Título no topo do carrossel */
+header.page-header h1 {
+  position: relative;
+  z-index: 2;
+  font-size: 2.5rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
 
     /* ===== PLANOS FINANCEIROS ===== */
     .planos {
@@ -304,11 +312,15 @@
     <button class="login-btn" id="btn-login" aria-label="Login">Login</button>
   </nav>
 
-  <header class="page-header" role="banner">
-  <div class="container">
-    <h1>Financeiro - Kyrios Clinical Services</h1>
+<header class="page-header" role="banner">
+  <div class="header-carousel" aria-hidden="true">
+    <img src="images/2.png" alt="" class="active" />
+    <img src="images/3.png" alt="" />
+    <img src="images/5.png" alt="" />
   </div>
+  <h1>Financeiro - Kyrios Clinical Services</h1>
 </header>
+
 
 
   <main class="container">
@@ -399,6 +411,21 @@
       }
     });
   </script>
+
+<script>
+  // Carrossel simples de fundo do header
+  const imgs = document.querySelectorAll('.header-carousel img');
+  let current = 0;
+
+  setInterval(() => {
+    imgs[current].classList.remove('active');
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.add('active');
+  }, 5000); // Troca a cada 5 segundos
+</script>
+
+  
 </body>
 </html>
+
 
