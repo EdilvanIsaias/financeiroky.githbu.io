@@ -322,14 +322,21 @@ header.page-header h1 {
 </head>
 <body>
 
-    <!-- Widget Env Script -->
-    <script>
-      window.ZWidget = {
-        AgentURL: "https://platform.zaia.app/embed/chat/65791",
-      };
-    </script>
-    <!-- Widget Loader Script -->
-    <script src="https://platform.zaia.app/script/widget-loader.js"></script>
+<!-- Widget Env Script -->
+<script>
+  window.ZWidget = {
+    AgentURL: "https://platform.zaia.app/embed/chat/65791",
+    autoShow: true, // Mostra automaticamente
+    openOnLoad: true, // Abre sozinho ao carregar
+    showLauncher: true, // Mostra botão flutuante
+    launcherText: "💬 Fale conosco",
+    position: "right", // ou "left"
+    width: "380px",
+    height: "540px"
+  };
+</script>
+<!-- Widget Loader Script -->
+<script src="https://platform.zaia.app/script/widget-loader.js"></script>
 
   <nav role="navigation" aria-label="Barra de navegação principal">
     <button id="btn-voltar" aria-label="Voltar para a página anterior">← Voltar</button>
@@ -455,6 +462,7 @@ header.page-header h1 {
   
 </body>
 </html>
+
 
 
 
