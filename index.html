@@ -459,9 +459,25 @@ header.page-header h1 {
   }, 5000); // Troca a cada 5 segundos
 </script>
 
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const secao = params.get('secao');
+
+    if (secao) {
+      const target = document.getElementById(secao);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
+
+
   
 </body>
 </html>
+
 
 
 
