@@ -124,12 +124,27 @@ header.page-header h1 {
 
 
     /* ===== PLANOS FINANCEIROS ===== */
-    .planos {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
+   /* ===== SEÇÃO PLANOS COM TÍTULO CENTRALIZADO ===== */
+.planos-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.planos-section h2 {
+  font-size: 2rem;
+  color: #004d66;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Mantém o estilo dos planos já existente */
+.planos {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
     }
     .plano {
       background-color: rgba(255, 255, 255, 0.9);
@@ -326,27 +341,31 @@ header.page-header h1 {
   <main class="container">
 
     <!-- Planos Financeiros -->
-    <section aria-labelledby="planos-title" class="planos" role="region">
-      <h2 id="planos-title" class="visually-hidden">Planos Financeiros</h2>
-      <article class="plano" tabindex="0" aria-label="Plano Básico">
-        <img src="images/plano_basico.jpg" alt="Imagem ilustrativa do Plano Básico" />
-        <h3>Plano Básico</h3>
-        <p>Descrição do plano básico.</p>
-        <button>Assinar</button>
-      </article>
-      <article class="plano" tabindex="0" aria-label="Plano Avançado">
-        <img src="images/plano_avancado.jpg" alt="Imagem ilustrativa do Plano Avançado" />
-        <h3>Plano Avançado</h3>
-        <p>Descrição do plano avançado.</p>
-        <button>Assinar</button>
-      </article>
-      <article class="plano" tabindex="0" aria-label="Plano Premium">
-        <img src="images/plano_premium.jpg" alt="Imagem ilustrativa do Plano Premium" />
-        <h3>Plano Premium</h3>
-        <p>Descrição do plano premium.</p>
-        <button>Assinar</button>
-      </article>
-    </section>
+    <!-- Planos Financeiros -->
+<section aria-labelledby="planos-title" class="planos-section" role="region">
+  <h2 id="planos-title">Planos Financeiros</h2>
+  <div class="planos">
+    <article class="plano" tabindex="0" aria-label="Plano Básico">
+      <img src="images/plano_basico.jpg" alt="Imagem ilustrativa do Plano Básico" />
+      <h3>Plano Básico</h3>
+      <p>Descrição do plano básico.</p>
+      <button>Assinar</button>
+    </article>
+    <article class="plano" tabindex="0" aria-label="Plano Avançado">
+      <img src="images/plano_avancado.jpg" alt="Imagem ilustrativa do Plano Avançado" />
+      <h3>Plano Avançado</h3>
+      <p>Descrição do plano avançado.</p>
+      <button>Assinar</button>
+    </article>
+    <article class="plano" tabindex="0" aria-label="Plano Premium">
+      <img src="images/plano_premium.jpg" alt="Imagem ilustrativa do Plano Premium" />
+      <h3>Plano Premium</h3>
+      <p>Descrição do plano premium.</p>
+      <button>Assinar</button>
+    </article>
+  </div>
+</section>
+
 
     <!-- Segunda Via -->
     <section aria-labelledby="segunda-via-title" class="segunda-via" role="region">
@@ -427,5 +446,6 @@ header.page-header h1 {
   
 </body>
 </html>
+
 
 
