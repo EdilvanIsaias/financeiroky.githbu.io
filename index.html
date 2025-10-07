@@ -20,6 +20,10 @@
       padding: 2rem;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+    
     /* ===== NAVBAR ===== */
     nav {
       background-color: #004d66;
@@ -70,82 +74,80 @@
 
     /* ===== HEADER / FUNDO TÍTULO ===== */
     /* ===== HEADER / CARROSSEL DE FUNDO ===== */
-header.page-header {
-  position: relative;
-  width: 100vw;
-  height: 280px;
-  background-color: #004d66; /* fallback */
-  overflow: hidden;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-}
+    header.page-header {
+      position: relative;
+      width: 100vw;
+      height: 280px;
+      background-color: #004d66; /* fallback */
+      overflow: hidden;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
 
-/* Container do carrossel */
-.header-carousel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
+    /* Container do carrossel */
+    .header-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-/* Imagens em fade */
-.header-carousel img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
+    /* Imagens em fade */
+    .header-carousel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
 
-/* Imagem visível */
-.header-carousel img.active {
-  opacity: 1;
-}
+    /* Imagem visível */
+    .header-carousel img.active {
+      opacity: 1;
+    }
 
-/* Título no topo do carrossel */
-header.page-header h1 {
-  position: relative;
-  z-index: 2;
-  font-size: 2.5rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-}
-
+    /* Título no topo do carrossel */
+    header.page-header h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 2.5rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
 
     /* ===== PLANOS FINANCEIROS ===== */
-   /* ===== SEÇÃO PLANOS COM TÍTULO CENTRALIZADO ===== */
-.planos-section {
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.planos-section h2 {
-  font-size: 2rem;
-  color: #004d66;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
-/* Mantém o estilo dos planos já existente */
-.planos {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
+    /* ===== SEÇÃO PLANOS COM TÍTULO CENTRALIZADO ===== */
+    .planos-section {
+      margin-bottom: 3rem;
+      text-align: center;
     }
+
+    .planos-section h2 {
+      font-size: 2rem;
+      color: #004d66;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    /* Mantém o estilo dos planos já existente */
+    .planos {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .plano {
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
@@ -264,6 +266,10 @@ header.page-header h1 {
       justify-content: center;
       align-items: center;
     }
+    #login-overlay {
+      display: none;
+      display: flex; /* importante para o modal */
+    }
     .modal-content {
       background: #fff;
       border-radius: 10px;
@@ -317,6 +323,10 @@ header.page-header h1 {
         width: 100%;
         max-width: none;
       }
+      .modal-content {
+        width: 90vw;
+        height: 80vh;
+      }
     }
   </style>
 </head>
@@ -326,22 +336,21 @@ header.page-header h1 {
 <script>
   window.ZWidget = {
     AgentURL: "https://platform.zaia.app/embed/chat/65791",
-    autoShow: true, // Mostra automaticamente
-    openOnLoad: true, // Abre sozinho ao carregar
-    showLauncher: true, // Mostra botão flutuante
+    autoShow: true,
+    openOnLoad: true,
+    showLauncher: true,
     launcherText: "💬 Fale conosco",
-    position: "right", // ou "left"
+    position: "right",
     width: "380px",
     height: "540px"
   };
 </script>
-<!-- Widget Loader Script -->
 <script src="https://platform.zaia.app/script/widget-loader.js"></script>
 
-  <nav role="navigation" aria-label="Barra de navegação principal">
-    <button id="btn-voltar" aria-label="Voltar para a página anterior">← Voltar</button>
-    <button class="login-btn" id="btn-login" aria-label="Login">Login</button>
-  </nav>
+<nav role="navigation" aria-label="Barra de navegação principal">
+  <button id="btn-voltar" aria-label="Voltar para a página anterior">← Voltar</button>
+  <button class="login-btn" id="btn-login" aria-label="Login">Login</button>
+</nav>
 
 <header class="page-header" role="banner">
   <div class="header-carousel" aria-hidden="true">
@@ -352,101 +361,94 @@ header.page-header h1 {
   <h1>Financeiro - Kyrios Clinical Services</h1>
 </header>
 
-
-
-  <main class="container">
-
-<!-- Planos Financeiros -->
-<section aria-labelledby="planos-title" class="planos-section" role="region">
-  <h2 id="planos-title">Planos Financeiros</h2>
-  <div class="planos">
-    <article class="plano" tabindex="0" aria-label="Plano Básico">
-      <img src="images/plano.webp" alt="Imagem ilustrativa do Plano Básico" />
-      <h3>Plano Básico</h3>
-      <p>Descrição do plano básico.</p>
-      <button>Assinar</button>
-    </article>
-    <article class="plano" tabindex="0" aria-label="Plano Avançado">
-      <img src="images/plano2.webp" alt="Imagem ilustrativa do Plano Avançado" />
-      <h3>Plano Avançado</h3>
-      <p>Descrição do plano avançado.</p>
-      <button>Assinar</button>
-    </article>
-    <article class="plano" tabindex="0" aria-label="Plano Premium">
-      <img src="images/plano3.webp" alt="Imagem ilustrativa do Plano Premium" />
-      <h3>Plano Premium</h3>
-      <p>Descrição do plano premium.</p>
-      <button>Assinar</button>
-    </article>
-  </div>
-</section>
-
-
-
-    <!-- Segunda Via -->
-    <section aria-labelledby="segunda-via-title" class="segunda-via" role="region">
-      <h2 id="segunda-via-title">Segunda Via</h2>
-      <form id="segunda-via-form">
-        <input type="email" id="email-segunda-via" name="email" placeholder="Digite seu e-mail" aria-label="Digite seu e-mail para solicitar segunda via" required />
-        <br />
-        <button type="submit">Solicitar</button>
-      </form>
-    </section>
-
-    <!-- Cartões -->
-    <section aria-labelledby="cartoes-title" class="cartoes" role="region">
-      <h2 id="cartoes-title">Cartões de Crédito</h2>
-      <p>Aqui você pode adicionar seus cartões para pagamentos rápidos.</p>
-    </section>
-
-  </main>
-
-  <!-- Modal Login -->
-  <div id="login-overlay" role="dialog" aria-modal="true" aria-labelledby="login-modal-title" tabindex="-1">
-    <div class="modal-content">
-      <button class="close" aria-label="Fechar modal">×</button>
-      <iframe src="login.html" title="Formulário de login"></iframe>
+<main class="container">
+  <!-- Planos Financeiros -->
+  <section aria-labelledby="planos-title" class="planos-section" role="region" id="planos">
+    <h2 id="planos-title">Planos Financeiros</h2>
+    <div class="planos">
+      <article class="plano" tabindex="0" aria-label="Plano Básico">
+        <img src="images/plano.webp" alt="Imagem ilustrativa do Plano Básico" />
+        <h3>Plano Básico</h3>
+        <p>Descrição do plano básico.</p>
+        <button>Assinar</button>
+      </article>
+      <article class="plano" tabindex="0" aria-label="Plano Avançado">
+        <img src="images/plano2.webp" alt="Imagem ilustrativa do Plano Avançado" />
+        <h3>Plano Avançado</h3>
+        <p>Descrição do plano avançado.</p>
+        <button>Assinar</button>
+      </article>
+      <article class="plano" tabindex="0" aria-label="Plano Premium">
+        <img src="images/plano3.webp" alt="Imagem ilustrativa do Plano Premium" />
+        <h3>Plano Premium</h3>
+        <p>Descrição do plano premium.</p>
+        <button>Assinar</button>
+      </article>
     </div>
+  </section>
+
+  <!-- Segunda Via -->
+  <section aria-labelledby="segunda-via-title" class="segunda-via" role="region" id="segunda-via">
+    <h2 id="segunda-via-title">Segunda Via</h2>
+    <form id="segunda-via-form">
+      <input type="email" id="email-segunda-via" name="email" placeholder="Digite seu e-mail" aria-label="Digite seu e-mail para solicitar segunda via" required />
+      <br />
+      <button type="submit">Solicitar</button>
+    </form>
+  </section>
+
+  <!-- Cartões -->
+  <section aria-labelledby="cartoes-title" class="cartoes" role="region" id="cartao">
+    <h2 id="cartoes-title">Cartões de Crédito</h2>
+    <p>Aqui você pode adicionar seus cartões para pagamentos rápidos.</p>
+  </section>
+</main>
+
+<!-- Modal Login -->
+<div id="login-overlay" role="dialog" aria-modal="true" aria-labelledby="login-modal-title" tabindex="-1" style="display:none;">
+  <div class="modal-content">
+    <button class="close" aria-label="Fechar modal">×</button>
+    <iframe src="login.html" title="Formulário de login"></iframe>
   </div>
+</div>
 
-  <script>
-    // Botão voltar retorna para a página anterior
-    document.getElementById('btn-voltar').addEventListener('click', () => {
-  window.location.href = 'https://edilvanisaias.github.io/#';
-});
+<script>
+  // Botão voltar retorna para a página anterior
+  document.getElementById('btn-voltar').addEventListener('click', () => {
+    window.location.href = 'https://edilvanisaias.github.io/#';
+  });
 
+  // Abrir modal de login
+  const btnLogin = document.getElementById('btn-login');
+  const loginOverlay = document.getElementById('login-overlay');
+  const closeModalBtn = loginOverlay.querySelector('.close');
 
-    // Abrir modal de login
-    const btnLogin = document.getElementById('btn-login');
-    const loginOverlay = document.getElementById('login-overlay');
-    const closeModalBtn = loginOverlay.querySelector('.close');
+  btnLogin.addEventListener('click', () => {
+    loginOverlay.style.display = 'flex';
+    loginOverlay.focus();
+  });
 
-    btnLogin.addEventListener('click', () => {
-      loginOverlay.style.display = 'flex';
-      loginOverlay.focus();
-    });
+  closeModalBtn.addEventListener('click', () => {
+    loginOverlay.style.display = 'none';
+    btnLogin.focus();
+  });
 
-    closeModalBtn.addEventListener('click', () => {
+  // Fechar modal ao clicar fora do conteúdo
+  loginOverlay.addEventListener('click', (e) => {
+    if (e.target === loginOverlay) {
       loginOverlay.style.display = 'none';
       btnLogin.focus();
-    });
+    }
+  });
 
-    // Fechar modal ao clicar fora do conteúdo
-    loginOverlay.addEventListener('click', (e) => {
-      if (e.target === loginOverlay) {
-        loginOverlay.style.display = 'none';
-        btnLogin.focus();
-      }
-    });
-
-    // Fechar modal com ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape" && loginOverlay.style.display === 'flex') {
-        loginOverlay.style.display = 'none';
-        btnLogin.focus();
-      }
-    });
-  </script>
+  // Fechar modal com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && loginOverlay.style.display === 'flex') {
+      loginOverlay.style.display = 'none';
+      btnLogin.focus();
+    }
+  });
+</script>
 
 <script>
   // Carrossel simples de fundo do header
@@ -457,10 +459,10 @@ header.page-header h1 {
     imgs[current].classList.remove('active');
     current = (current + 1) % imgs.length;
     imgs[current].classList.add('active');
-  }, 5000); // Troca a cada 5 segundos
+  }, 5000);
 </script>
 
-  <script>
+<script>
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const secao = params.get('secao');
@@ -474,17 +476,5 @@ header.page-header h1 {
   });
 </script>
 
-
-  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
